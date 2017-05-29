@@ -72,7 +72,22 @@ swiftmailer:
 # Mineur twitter stream api
 twitter_stream_api_client:
     twitter:
-        consumer_key: 'bTlijKb4c6vnGS1skdZQo5ch0'
-        consumer_secret: 'PNGiXkQta5pa2T0XCEGNCxBniZe94vyK0GbXUtEX2Y7GynNX6Y'
-        access_token: '305706048-vfG5DWcT64WpLz0N3AE5rFlre5Gmf9CVG4z3DpWW'
-        access_token_secret: 'TRXyhuic9Lka5QHr3ovA5C0LSoa4aFeuuZa3dVth7pG2S'
+        consumer_key: '%twitter_stream_consumer_key%'
+        consumer_secret: '%twitter_stream_consumer_secret%'
+        access_token: '%twitter_stream_access_token%'
+        access_token_secret: '%twitter_stream_access_token_secret%'
+
+# RS Queue
+rs_queue:
+    # Queues definition
+    queues:
+        videos: "queues:videos"
+        audios: "queues:audios"
+    # Serializer definition
+    serializer: ~
+    # Server configuration. By default, these values
+    server:
+        redis:
+            host: 127.0.0.1
+            port: 6379
+            database: ~

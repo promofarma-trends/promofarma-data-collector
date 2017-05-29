@@ -1,4 +1,10 @@
-PromofarmaDataMiner
+Demo App
 ===================
+> This is a Symfony demo application to test all Mineur libraries and bundles.
 
-A Symfony project created on May 11, 2017, 7:28 pm.
+## Installation
+```shell
+git clone https://github.com/mineur/demo.git
+cd demo
+composer update
+```

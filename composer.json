@@ -27,6 +27,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "mineur/twitter-stream-api": "dev-master",
         "mineur/twitter-stream-api-bundle": "dev-master",
+        "rsqueue/rsqueue": "dev-master",
+        "rsqueue/rsqueue-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.0.2",

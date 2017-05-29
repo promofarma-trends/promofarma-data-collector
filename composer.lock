@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "69fefac47ddc43dae4e520c337ab4589",
+    "content-hash": "3c51164a5210180ed996b68e804a5b8d",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1521,6 +1521,117 @@
             "time": "2016-10-10T12:19:37+00:00"
         },
         {
+            "name": "rsqueue/rsqueue",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RSQueue/RSQueue.git",
+                "reference": "90af47ffcad19cf71ab7a5fd5c71a3bb098ef094"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RSQueue/RSQueue/zipball/90af47ffcad19cf71ab7a5fd5c71a3bb098ef094",
+                "reference": "90af47ffcad19cf71ab7a5fd5c71a3bb098ef094",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "symfony/console": "~3.0",
+                "symfony/event-dispatcher": "~3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "1.11",
+                "mmoreram/php-formatter": "1.1.0",
+                "phpunit/phpunit": "5.4.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RSQueue\\": "src/RSQueue"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Morera",
+                    "email": "yuhu@mmoreram.com"
+                }
+            ],
+            "description": "Redis PHP Queue Bundle",
+            "keywords": [
+                "php",
+                "queue",
+                "redis",
+                "rsqueue"
+            ],
+            "time": "2017-03-08 13:26:09"
+        },
+        {
+            "name": "rsqueue/rsqueue-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RSQueue/RSQueueBundle.git",
+                "reference": "911b7bf132c5f9efcf58963c49742194b3d7f9cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RSQueue/RSQueueBundle/zipball/911b7bf132c5f9efcf58963c49742194b3d7f9cd",
+                "reference": "911b7bf132c5f9efcf58963c49742194b3d7f9cd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "rsqueue/rsqueue": "dev-master",
+                "symfony/config": "~2.3|~3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/http-foundation": "^3.0",
+                "symfony/http-kernel": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "1.11",
+                "mmoreram/php-formatter": "1.1.0",
+                "phpunit/phpunit": "5.4.4"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RSQueueBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Morera",
+                    "email": "yuhu@mmoreram.com"
+                }
+            ],
+            "description": "Redis Symfony2 Queue Bundle, a simple and soft redis based message queue for symfony2",
+            "keywords": [
+                "queue",
+                "redis",
+                "rsqueue",
+                "symfony"
+            ],
+            "time": "2016-07-14 17:06:31"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v5.0.19",
             "source": {
@@ -2526,7 +2637,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "mineur/twitter-stream-api": 20,
-        "mineur/twitter-stream-api-bundle": 20
+        "mineur/twitter-stream-api-bundle": 20,
+        "rsqueue/rsqueue": 20,
+        "rsqueue/rsqueue-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
