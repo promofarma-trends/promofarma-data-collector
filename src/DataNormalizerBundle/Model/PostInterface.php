@@ -1,6 +1,6 @@
 <?php
 
-namespace DataNormalizerBundle\Domain;
+namespace DataNormalizerBundle\Model;
 
 /**
  * Interface PostInterface
@@ -9,5 +9,8 @@ namespace DataNormalizerBundle\Domain;
  */
 interface PostInterface
 {
+    /**
+     * @return mixed
+     */
     public function normalize();
 }

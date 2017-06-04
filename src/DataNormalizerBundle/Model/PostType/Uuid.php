@@ -1,6 +1,6 @@
 <?php
 
-namespace DataNormalizerBundle\Domain\PostType;
+namespace DataNormalizerBundle\Model\PostType;
 
 /**
  * Class Uuid

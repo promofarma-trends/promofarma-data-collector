@@ -2,17 +2,14 @@
 
 namespace DataNormalizerBundle\Services;
 
-use DataNormalizerBundle\Domain\Post;
-use DataNormalizerBundle\Domain\PostInterface;
-use DataNormalizerBundle\Domain\PostType\Content;
-use DataNormalizerBundle\Domain\PostType\Coordinates;
-use DataNormalizerBundle\Domain\PostType\Image;
-use DataNormalizerBundle\Domain\PostType\Language;
-use DataNormalizerBundle\Domain\PostType\Location;
-use DataNormalizerBundle\Domain\PostType\Score;
-use DataNormalizerBundle\Domain\PostType\Uuid;
-use DateTime;
+use DataNormalizerBundle\Model\Post;
+use DataNormalizerBundle\Model\PostInterface;
+use DataNormalizerBundle\Model\PostType\Coordinates;
+use DataNormalizerBundle\Model\PostType\Location;
+use DataNormalizerBundle\Model\PostType\Score;
+use DataNormalizerBundle\Model\PostType\Uuid;
 use Mineur\TwitterStreamApi\Tweet;
+use DateTime;
 
 /**
  * Class TwitterPostAdapter
@@ -21,30 +18,28 @@ use Mineur\TwitterStreamApi\Tweet;
  */
 class TwitterPostAdapter implements PostInterface
 {
+    /** @var Tweet */
     private $tweet;
     
+    /**
+     * TwitterPostAdapter constructor.
+     *
+     * @param Tweet $tweet
+     */
     public function __construct(Tweet $tweet)
     {
         $this->tweet = $tweet;
     }
     
-    /**
-     * @return Post
-     */
-    public function normalize()
+    /** @return Post */
+    public function normalize(): Post
     {
         $uuid     = Uuid::generate();
         $content  = $this->tweet->getText();
         $lang     = $this->tweet->getLang();
-        $image    = 'http://placehold.it/350x150';
-//        $location = Location::fromArray(
-//            'Barcelona',
-//            'Spain',
-//            Coordinates::fromLatLong(
-//                floatval('12,12312312'),
-//                floatval('-34,3231231')
-//            )
-//        );
+        $media    = $this->composeMedia();
+        $tags     = $this->composeTags();
+        $location = $this->composeLocation();
         $score     = Score::fromInteger(3);
         $createdAt = new DateTime('now');
     
@@ -52,10 +47,63 @@ class TwitterPostAdapter implements PostInterface
             $uuid,
             $content,
             $lang,
-            $image,
-//            $location,
+            $media,
+            $tags,
+            $location,
             $score,
-            $createdAt
+            $createdAt,
+            'twitter'
         );
+    }
+    
+    private function composeLocation()
+    {
+        $tweetPlace = $this->tweet->getPlaces();
+        $tweetCoordinates = $this->tweet->getCoordinates();
+        $coordinates = $tweetCoordinates['coordinates'];
+        
+        if (null === $tweetPlace && null ===$tweetCoordinates) {
+            return null;
+        }
+        
+        return Location::fromArray(
+            $tweetPlace['place_type'],
+            $tweetPlace['name'],
+            $tweetPlace['full_name'],
+            $tweetPlace['country'],
+            $tweetPlace['country_code'],
+            Coordinates::fromLatLong(
+                $coordinates[0],
+                $coordinates[1]
+            )
+        );
+    }
+    
+    private function composeMedia()
+    {
+        $entities = $this->tweet->getEntities();
+        $media = [];
+        
+        if (isset($entities['media'])) {
+            foreach($entities['media'] as $item) {
+                $media[] = $item['media_url'];
+            }
+        }
+        
+        return $media;
+    }
+    
+    private function composeTags()
+    {
+        $entities = $this->tweet->getEntities();
+        $tags = [];
+        
+        if (isset($entities['hashtags'])) {
+            foreach($entities['hashtags'] as $hashtag) {
+                $tags[] = $hashtag['text'];
+            }
+        }
+        
+        return $tags;
     }
 }

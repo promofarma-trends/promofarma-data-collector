@@ -6,7 +6,7 @@
  * Time: 17:23
  */
 
-namespace DataNormalizerBundle\Domain\PostType;
+namespace DataNormalizerBundle\Model\PostType;
 
 use DataNormalizerBundle\Exception\NotValidScoreException;
 
