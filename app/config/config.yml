@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@DataNormalizerBundle/Resources/config/commands.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -79,13 +80,9 @@ twitter_stream_api_client:
 
 # RS Queue
 rs_queue:
-    # Queues definition
     queues:
-        videos: "queues:videos"
-        audios: "queues:audios"
-    # Serializer definition
+        tweets: "queues:tweets"
     serializer: ~
-    # Server configuration. By default, these values
     server:
         redis:
             host: 127.0.0.1

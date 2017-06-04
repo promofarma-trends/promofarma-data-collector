@@ -1,0 +1,9 @@
+services:
+    #
+    # Twitter Data normalizer consumer
+    #
+    app.command.twitter_data_normalize_consumer_command:
+        class: DataNormalizerBundle\Command\TwitterDataNormalizeConsumerCommand
+        arguments: ["@rs_queue.consumer"]
+        tags:
+            - { name: console.command }

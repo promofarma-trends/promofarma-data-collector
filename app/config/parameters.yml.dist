@@ -17,3 +17,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    twitter_stream_consumer_key: ~
+    twitter_stream_consumer_secret: ~
+    twitter_stream_access_token: ~
+    twitter_stream_access_token_secret: ~
