@@ -27,6 +27,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "mineur/twitter-stream-api": "dev-master",
         "mineur/twitter-stream-api-bundle": "dev-master",
+        "php-amqplib/rabbitmq-bundle": "^1.12",
         "rsqueue/rsqueue": "dev-master",
         "rsqueue/rsqueue-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0",

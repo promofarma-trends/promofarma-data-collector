@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Mineur\TwitterStreamApiBundle\TwitterStreamApiBundle(),
             new RSQueueBundle\RSQueueBundle(),
-            new DataNormalizerBundle\DataNormalizerBundle()
+            new DataNormalizerBundle\DataNormalizerBundle(),
+            new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

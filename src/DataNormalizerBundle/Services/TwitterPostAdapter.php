@@ -8,7 +8,7 @@ use DataNormalizerBundle\Model\PostType\Coordinates;
 use DataNormalizerBundle\Model\PostType\Location;
 use DataNormalizerBundle\Model\PostType\Score;
 use DataNormalizerBundle\Model\PostType\Uuid;
-use Mineur\TwitterStreamApi\Tweet;
+use Mineur\TwitterStreamApi\Model\Tweet;
 use DateTime;
 
 /**
@@ -35,12 +35,15 @@ class TwitterPostAdapter implements PostInterface
     public function normalize(): Post
     {
         $uuid     = Uuid::generate();
-        $content  = $this->tweet->getText();
+        $content  = (null !== $this->tweet->getRetweetedStatus())
+            ? $this->tweet->getRetweetedStatus()->getText()
+            : $this->tweet->getText()
+        ;
         $lang     = $this->tweet->getLang();
         $media    = $this->composeMedia();
         $tags     = $this->composeTags();
         $location = $this->composeLocation();
-        $score     = Score::fromInteger(3);
+        $score    = $this->composeScore();
         $createdAt = new DateTime('now');
     
         return new Post(
@@ -105,5 +108,22 @@ class TwitterPostAdapter implements PostInterface
         }
         
         return $tags;
+    }
+    
+    private function composeScore()
+    {
+        $score = 0;
+        
+        if (null !== $this->tweet->getRetweetedStatus()) {
+            /** @var RetweetedStatus $retweet */
+            $retweet = $this->tweet->getRetweetedStatus();
+            $userFollowers = $retweet->getUser()->getFollowersCount();
+            $retweetsCount = $retweet->getRetweetCount();
+            $favsCount = $retweet->getFavoriteCount();
+            
+            $score = ($userFollowers * 20) / 100; // 20% of user followers
+        }
+        
+        return Score::fromInteger($score);
     }
 }

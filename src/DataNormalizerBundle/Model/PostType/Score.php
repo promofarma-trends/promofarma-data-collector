@@ -21,7 +21,7 @@ class Score
     
     private function __construct(int $score)
     {
-        $this->ensureIsValidScore($score);
+//        $this->ensureIsValidScore($score);
         
         $this->score = $score;
     }
