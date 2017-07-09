@@ -25,6 +25,8 @@
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
+        "mineur/instagram-parser": "dev-master",
+        "mineur/instagram-parser-bundle": "dev-master",
         "mineur/twitter-stream-api": "dev-master",
         "mineur/twitter-stream-api-bundle": "dev-master",
         "rsqueue/rsqueue": "dev-master",
