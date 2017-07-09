@@ -3,6 +3,7 @@
 namespace DataNormalizerBundle\Command;
 
 
+use DataNormalizerBundle\Services\InstagramPostAdapter;
 use DataNormalizerBundle\Services\TwitterPostAdapter;
 use RSQueue\Command\ConsumerCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @package DataNormalizerBundle\Command
  */
-class TwitterDataNormalizeConsumerCommand extends ConsumerCommand
+class DataNormalizeConsumerCommand extends ConsumerCommand
 {
     /**
      * Configuration method
@@ -82,6 +83,8 @@ class TwitterDataNormalizeConsumerCommand extends ConsumerCommand
     {
         $instagramPost = unserialize($payload);
         
-        dump($instagramPost);
+        dump(
+            (new InstagramPostAdapter($instagramPost))->normalize()
+        );
     }
 }

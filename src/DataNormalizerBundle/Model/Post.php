@@ -56,7 +56,7 @@ class Post
     public function __construct(
         string $uuid,
         string $content,
-        string $lang,
+        ? string $lang,
         array $media,
         array $tags,
         ? Location $location,
@@ -88,8 +88,8 @@ class Post
         return $this->content;
     }
     
-    /** @return string */
-    public function getLang(): string
+    /** @return null|string */
+    public function getLang(): ? string
     {
         return $this->lang;
     }

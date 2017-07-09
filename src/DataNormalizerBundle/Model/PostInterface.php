@@ -12,5 +12,5 @@ interface PostInterface
     /**
      * @return mixed
      */
-    public function normalize();
+    public function normalize(): Post;
 }
