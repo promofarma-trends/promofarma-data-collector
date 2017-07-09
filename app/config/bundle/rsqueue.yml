@@ -1,0 +1,11 @@
+# RS Queue
+rs_queue:
+    queues:
+        tweets: "queues:tweets"
+        # another queue...
+    serializer: ~
+    server:
+        redis:
+            host: 127.0.0.1
+            port: 6379
+            database: ~
