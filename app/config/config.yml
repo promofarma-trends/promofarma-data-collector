@@ -1,3 +1,6 @@
+#
+# Configuration index
+#
 imports:
     # Framework configurations
     - { resource: parameters.yml }
@@ -7,6 +10,9 @@ imports:
     - { resource: bundle/ }
     - { resource: "@DataNormalizerBundle/Resources/config/commands.yml" }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
+#
+# Put parameters here that don't need to change
+# on each machine where the app is deployed
+#
 parameters:
     locale: en
