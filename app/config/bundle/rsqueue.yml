@@ -2,6 +2,7 @@
 rs_queue:
     queues:
         tweets: "queues:tweets"
+        instagram_posts: "queues:instagram_posts"
         # another queue...
     serializer: ~
     server:

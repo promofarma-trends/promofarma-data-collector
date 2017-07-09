@@ -32,7 +32,14 @@ class TwitterDataNormalizeConsumerCommand extends ConsumerCommand
      */
     public function define()
     {
-        $this->addQueue('queues:tweets', 'normalize');
+        $this->addQueue(
+            'queues:tweets',
+            'normalizeTweet'
+        );
+        $this->addQueue(
+            'queues:instagram_posts',
+            'normalizeInstagramPost'
+        );
     }
     
     /**
@@ -54,7 +61,7 @@ class TwitterDataNormalizeConsumerCommand extends ConsumerCommand
      * @param Mixed           $payload Data retrieved and unserialized from
      *                                 queue
      */
-    public function normalize(
+    public function normalizeTweet(
         InputInterface $input,
         OutputInterface $output,
         $payload
@@ -65,5 +72,16 @@ class TwitterDataNormalizeConsumerCommand extends ConsumerCommand
         dump(
             (new TwitterPostAdapter($tweet))->normalize()
         );
+    }
+    
+    public function normalizeInstagramPost(
+        InputInterface $input,
+        OutputInterface $output,
+        $payload
+    )
+    {
+        $instagramPost = unserialize($payload);
+        
+        dump($instagramPost);
     }
 }
