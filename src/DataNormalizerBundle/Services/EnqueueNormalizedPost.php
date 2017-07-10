@@ -10,7 +10,7 @@ use SqsPhpBundle\Client\Client;
  *
  * @package DataNormalizerBundle\Services
  */
-class SqsEnqueue
+class EnqueueNormalizedPost
 {
     /**
      * @var Client

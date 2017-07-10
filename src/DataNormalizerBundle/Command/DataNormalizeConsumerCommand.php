@@ -4,7 +4,7 @@ namespace DataNormalizerBundle\Command;
 
 
 use DataNormalizerBundle\Services\InstagramPostAdapter;
-use DataNormalizerBundle\Services\SqsEnqueue;
+use DataNormalizerBundle\Services\EnqueueNormalizedPost;
 use DataNormalizerBundle\Services\TwitterPostAdapter;
 use RSQueue\Command\ConsumerCommand;
 use RSQueue\Services\Consumer;
@@ -19,25 +19,26 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DataNormalizeConsumerCommand extends ConsumerCommand
 {
     /**
-     * @var SqsEnqueue
+     * @var EnqueueNormalizedPost
      */
     private $sqsEnqueue;
     
     /**
      * DataNormalizeConsumerCommand constructor.
      *
-     * @param Consumer   $consumer
-     * @param SqsEnqueue $sqsEnqueue
+     * @param Consumer              $consumer
+     * @param EnqueueNormalizedPost $sqsEnqueue
      */
     public function __construct(
         Consumer $consumer,
-        SqsEnqueue $sqsEnqueue
+        EnqueueNormalizedPost $sqsEnqueue
     )
     {
         parent::__construct($consumer);
         
         $this->sqsEnqueue = $sqsEnqueue;
     }
+    
     /**
      * Configuration method
      */
@@ -80,7 +81,7 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     )
     {
         $tweet = unserialize($payload);
-        $post = (new TwitterPostAdapter($tweet))->normalize();
+        $post  = (new TwitterPostAdapter($tweet))->normalize();
         
         $this->sqsEnqueue->enqueue($post);
     }
@@ -92,7 +93,7 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     )
     {
         $instagramPost = unserialize($payload);
-        $post = (new InstagramPostAdapter($instagramPost))->normalize();
+        $post          = (new InstagramPostAdapter($instagramPost))->normalize();
         
         $this->sqsEnqueue->enqueue($post);
     }

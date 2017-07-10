@@ -3,6 +3,6 @@ services:
     # SQS Enqueue
     #
     data_normalizer.sqs.enqueue:
-      class: DataNormalizerBundle\Services\SqsEnqueue
+      class: DataNormalizerBundle\Services\EnqueueNormalizedPost
       arguments:
         - '@sqs_php.client'
