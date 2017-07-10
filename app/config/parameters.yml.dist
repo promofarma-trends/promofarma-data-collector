@@ -31,3 +31,4 @@ parameters:
 
     # SQS Url
     sqs_url: ~
+    sqs_php.region: ~

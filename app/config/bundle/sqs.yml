@@ -3,5 +3,6 @@
 #
 sqs_php:
     queues:
-        <queue_id>:
-            url: "%sqs_url%"
+        # Queue ids
+        normalized_posts_queue:
+            url: "%sqs_posts_url%"
