@@ -95,7 +95,7 @@ class Location
             'full_name'    => $this->fullName,
             'country_code' => $this->countryCode,
             'country'      => $this->country,
-            'coordinates'  => $this->coordinates
+            'coordinates'  => $this->coordinates->toArray()
         ];
     }
     

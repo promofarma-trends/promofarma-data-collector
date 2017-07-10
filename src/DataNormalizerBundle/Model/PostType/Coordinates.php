@@ -26,7 +26,7 @@ class Coordinates
         ? float $longitude
     )
     {
-        $this->latitude = $latitude;
+        $this->latitude  = $latitude;
         $this->longitude = $longitude;
     }
     
@@ -46,6 +46,17 @@ class Coordinates
             $latitude,
             $longitude
         );
+    }
+    
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude
+        ];
     }
     
     /** @return float */
