@@ -55,7 +55,7 @@ class Post
      */
     public function __construct(
         string $uuid,
-        string $content,
+        ? string $content,
         ? string $lang,
         array $media,
         array $tags,
@@ -65,15 +65,41 @@ class Post
         string $source
     )
     {
-        $this->uuid = $uuid;
-        $this->content = $content;
-        $this->lang = $lang;
-        $this->media = $media;
-        $this->tags = $tags;
-        $this->location = $location;
-        $this->score = $score;
+        $this->uuid      = $uuid;
+        $this->content   = $content;
+        $this->lang      = $lang;
+        $this->media     = $media;
+        $this->tags      = $tags;
+        $this->location  = $location;
+        $this->score     = $score;
         $this->createdAt = $createdAt;
-        $this->source = $source;
+        $this->source    = $source;
+    }
+    
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'uuid'      => $this->uuid,
+            'content'   => $this->content,
+            'lang'      => $this->lang,
+            'media'     => $this->media,
+            'tags'      => $this->tags,
+            'location'  => $this->location->toArray(),
+            'score'     => $this->score->get(),
+            'created_at' => $this->createdAt,
+            'source'    => $this->source,
+        ];
+    }
+    
+    /**
+     * @return string
+     */
+    public function toJson()
+    {
+        return json_encode($this->toArray());
     }
     
     /** @return string */
@@ -82,8 +108,8 @@ class Post
         return $this->uuid;
     }
     
-    /** @return string */
-    public function getContent(): string
+    /** @return null|string */
+    public function getContent(): ? string
     {
         return $this->content;
     }
@@ -107,7 +133,7 @@ class Post
     }
     
     /** @return Location|null */
-    public function getLocation()
+    public function getLocation(): ? Location
     {
         return $this->location;
     }

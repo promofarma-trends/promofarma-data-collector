@@ -4,8 +4,10 @@ namespace DataNormalizerBundle\Command;
 
 
 use DataNormalizerBundle\Services\InstagramPostAdapter;
+use DataNormalizerBundle\Services\SqsEnqueue;
 use DataNormalizerBundle\Services\TwitterPostAdapter;
 use RSQueue\Command\ConsumerCommand;
+use RSQueue\Services\Consumer;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -16,6 +18,26 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DataNormalizeConsumerCommand extends ConsumerCommand
 {
+    /**
+     * @var SqsEnqueue
+     */
+    private $sqsEnqueue;
+    
+    /**
+     * DataNormalizeConsumerCommand constructor.
+     *
+     * @param Consumer   $consumer
+     * @param SqsEnqueue $sqsEnqueue
+     */
+    public function __construct(
+        Consumer $consumer,
+        SqsEnqueue $sqsEnqueue
+    )
+    {
+        parent::__construct($consumer);
+        
+        $this->sqsEnqueue = $sqsEnqueue;
+    }
     /**
      * Configuration method
      */
@@ -44,24 +66,13 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     }
     
     /**
-     * If many queues are defined, as Redis respects order of queues, you can
-     * shuffle them just overwritting method shuffleQueues() and returning true
-     *
-     * @return boolean Shuffle before passing to Gearman
+     * @{inheritdoc}
      */
     public function shuffleQueues()
     {
         return true;
     }
     
-    /**
-     * Consume method with retrieved queue value
-     *
-     * @param InputInterface  $input   An InputInterface instance
-     * @param OutputInterface $output  An OutputInterface instance
-     * @param Mixed           $payload Data retrieved and unserialized from
-     *                                 queue
-     */
     public function normalizeTweet(
         InputInterface $input,
         OutputInterface $output,
@@ -69,10 +80,9 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     )
     {
         $tweet = unserialize($payload);
+        $post = (new TwitterPostAdapter($tweet))->normalize();
         
-        dump(
-            (new TwitterPostAdapter($tweet))->normalize()
-        );
+        $this->sqsEnqueue->enqueue($post);
     }
     
     public function normalizeInstagramPost(
@@ -82,9 +92,8 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     )
     {
         $instagramPost = unserialize($payload);
+        $post = (new InstagramPostAdapter($instagramPost))->normalize();
         
-        dump(
-            (new InstagramPostAdapter($instagramPost))->normalize()
-        );
+        $this->sqsEnqueue->enqueue($post);
     }
 }

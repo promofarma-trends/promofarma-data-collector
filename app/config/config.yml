@@ -8,7 +8,10 @@ imports:
 
     # Bundle configurations
     - { resource: bundle/ }
+
+    # Data normalizer dependency injections
     - { resource: "@DataNormalizerBundle/Resources/config/commands.yml" }
+    - { resource: "@DataNormalizerBundle/Resources/config/services.yml" }
 
 #
 # Put parameters here that don't need to change

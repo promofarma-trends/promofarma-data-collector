@@ -1,0 +1,8 @@
+services:
+    #
+    # SQS Enqueue
+    #
+    data_normalizer.sqs.enqueue:
+      class: DataNormalizerBundle\Services\SqsEnqueue
+      arguments:
+        - '@sqs_php.client'

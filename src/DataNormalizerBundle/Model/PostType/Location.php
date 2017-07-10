@@ -9,13 +9,13 @@ namespace DataNormalizerBundle\Model\PostType;
  */
 class Location
 {
-    /** @var string  */
+    /** @var string */
     private $type;
     
-    /** @var string  */
+    /** @var string */
     private $name;
     
-    /** @var string  */
+    /** @var string */
     private $fullName;
     
     /** @var string */
@@ -46,10 +46,10 @@ class Location
         ? Coordinates $coordinates
     )
     {
-        $this->type = $type;
-        $this->name = $name;
-        $this->fullName = $fullName;
-        $this->country = $country;
+        $this->type        = $type;
+        $this->name        = $name;
+        $this->fullName    = $fullName;
+        $this->country     = $country;
         $this->countryCode = $countryCode;
         $this->coordinates = $coordinates;
     }
@@ -72,7 +72,7 @@ class Location
         ? string $country,
         ? string $countryCode,
         ? Coordinates $coordinates
-    ) : self
+    ): self
     {
         return new self(
             $type,
@@ -82,6 +82,21 @@ class Location
             $country,
             $coordinates
         );
+    }
+    
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'type'         => $this->type,
+            'name'         => $this->name,
+            'full_name'    => $this->fullName,
+            'country_code' => $this->countryCode,
+            'country'      => $this->country,
+            'coordinates'  => $this->coordinates
+        ];
     }
     
     /** @return string */

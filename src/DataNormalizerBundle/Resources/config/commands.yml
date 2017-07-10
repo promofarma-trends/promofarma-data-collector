@@ -4,6 +4,8 @@ services:
     #
     app.command.twitter_data_normalize_consumer_command:
         class: DataNormalizerBundle\Command\DataNormalizeConsumerCommand
-        arguments: ["@rs_queue.consumer"]
+        arguments:
+          - "@rs_queue.consumer"
+          - "@data_normalizer.sqs.enqueue"
         tags:
             - { name: console.command }
