@@ -8,6 +8,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+            /** Symfony */
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -21,6 +22,7 @@ class AppKernel extends Kernel
             
             /** Vendor Bundles */
             new RSQueueBundle\RSQueueBundle(),
+            new SqsPhpBundle\SqsPhpBundle(),
             new Mineur\TwitterStreamApiBundle\TwitterStreamApiBundle(),
             new Mineur\InstagramParserBundle\InstagramParserBundle(),
         ];

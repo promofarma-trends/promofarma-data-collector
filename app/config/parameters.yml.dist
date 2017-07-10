@@ -28,3 +28,6 @@ parameters:
 
     # Instagram parser
     instagram_parser_query_id: ~
+
+    # SQS Url
+    sqs_url: ~

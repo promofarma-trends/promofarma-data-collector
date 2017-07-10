@@ -1,0 +1,7 @@
+#
+# Amazon SQS
+#
+sqs_php:
+    queues:
+        <queue_id>:
+            url: "%sqs_url%"
