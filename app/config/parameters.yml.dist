@@ -30,5 +30,5 @@ parameters:
     instagram_parser_query_id: ~
 
     # SQS Url
-    sqs_url: ~
+    sqs_posts_url: ~
     sqs_php.region: ~

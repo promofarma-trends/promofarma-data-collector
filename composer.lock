@@ -1294,12 +1294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mineur/instagram-parser.git",
-                "reference": "6b111bbf33265d873020e751e46d47cdb2b5929e"
+                "reference": "a954655bce556b54fc82f698552d2155eda9d28a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mineur/instagram-parser/zipball/6b111bbf33265d873020e751e46d47cdb2b5929e",
-                "reference": "6b111bbf33265d873020e751e46d47cdb2b5929e",
+                "url": "https://api.github.com/repos/mineur/instagram-parser/zipball/a954655bce556b54fc82f698552d2155eda9d28a",
+                "reference": "a954655bce556b54fc82f698552d2155eda9d28a",
                 "shasum": ""
             },
             "require": {
@@ -1330,7 +1330,7 @@
                 }
             ],
             "description": "PHP parser to consume the instagram feed.",
-            "time": "2017-07-09 19:35:00"
+            "time": "2017-07-11 15:45:22"
         },
         {
             "name": "mineur/instagram-parser-bundle",
@@ -1338,12 +1338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mineur/instagram-parser-bundle.git",
-                "reference": "b45030d53fef956a6fd31cb956d91e8e0b926199"
+                "reference": "7982338b618178dc8599f50080f2db8928f69999"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mineur/instagram-parser-bundle/zipball/b45030d53fef956a6fd31cb956d91e8e0b926199",
-                "reference": "b45030d53fef956a6fd31cb956d91e8e0b926199",
+                "url": "https://api.github.com/repos/mineur/instagram-parser-bundle/zipball/7982338b618178dc8599f50080f2db8928f69999",
+                "reference": "7982338b618178dc8599f50080f2db8928f69999",
                 "shasum": ""
             },
             "require": {
@@ -1379,7 +1379,7 @@
                 }
             ],
             "description": "A bundle integration of Mineur instagram parser for Symfony",
-            "time": "2017-07-01 23:50:37"
+            "time": "2017-07-09 22:22:48"
         },
         {
             "name": "mineur/twitter-stream-api",
