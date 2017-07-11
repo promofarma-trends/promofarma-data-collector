@@ -4,8 +4,6 @@ namespace DataNormalizerBundle\Services;
 
 use DataNormalizerBundle\Model\Post;
 use DataNormalizerBundle\Model\PostInterface;
-use DataNormalizerBundle\Model\PostType\Coordinates;
-use DataNormalizerBundle\Model\PostType\Location;
 use DataNormalizerBundle\Model\PostType\Score;
 use DataNormalizerBundle\Model\PostType\Uuid;
 use DateTime;
@@ -32,15 +30,15 @@ class InstagramPostAdapter implements PostInterface
     }
     
     /** @return Post */
-    public function normalize(): Post
+    public function normalize()
     {
-        $uuid     = Uuid::generate();
-        $content  = $this->instagramPost->getComment();
-        $lang     = null;
-        $media    = $this->instagramPost->getMediaSrc();
-        $tags     = '';
-        $location = $this->composeLocation();
-        $score    = $this->composeScore();
+        $uuid      = Uuid::generate();
+        $content   = $this->instagramPost->getComment();
+        $lang      = null;
+        $media     = $this->instagramPost->getMediaSrc();
+        $tags      = $this->instagramPost->getTags();
+        $location  = null;
+        $score     = $this->composeScore();
         $createdAt = DateTime::createFromFormat(
             'U',
             $this->instagramPost->getTakenAtTimestamp()
@@ -51,7 +49,7 @@ class InstagramPostAdapter implements PostInterface
             $content,
             $lang,
             [$media],
-            [$tags],
+            $tags,
             $location,
             $score,
             $createdAt,
@@ -59,21 +57,9 @@ class InstagramPostAdapter implements PostInterface
         );
     }
     
-    private function composeLocation()
-    {
-        return Location::fromArray(
-            'city',
-            'Los Angeles',
-            'Los Angeles, California',
-            'United States of America',
-            'USA',
-            Coordinates::fromLatLong(
-                (float) 6.1234,
-                (float) -5.2345
-            )
-        );
-    }
-    
+    /**
+     * @return Score
+     */
     private function composeScore()
     {
         return Score::fromInteger(5);

@@ -59,7 +59,7 @@ class TwitterPostAdapter implements PostInterface
         );
     }
     
-    private function composeLocation()
+    private function composeLocation(): Location
     {
         $tweetPlace = $this->tweet->getPlaces();
         $tweetCoordinates = $this->tweet->getCoordinates();
