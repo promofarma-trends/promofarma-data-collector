@@ -1,0 +1,11 @@
+#
+# Keyword Storage Services
+#
+services:
+  #
+  # Data normalizer consumer
+  #
+  app.command.add_keyword:
+    class: KeywordsStorageBundle\Command\AddKeywordCommand
+    tags:
+      - { name: console.command }

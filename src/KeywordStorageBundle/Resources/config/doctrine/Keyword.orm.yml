@@ -1,0 +1,16 @@
+KeywordStorageBundle\Entity\Keyword:
+  type: entity
+  repositoryClass: KeywordStorageBundle\Repository\DoctrineKeywordRepository
+  table: keywords
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 100
+    lastFetch:
+      type: datetime
+      column: last_fetch

@@ -9,7 +9,11 @@ imports:
     # Bundle configurations
     - { resource: bundle/ }
 
-    # Data normalizer dependency injections
+    # Keyword Storage
+    - { resource: "@DataNormalizerBundle/Resources/config/commands.yml" }
+    - { resource: "@DataNormalizerBundle/Resources/config/services.yml" }
+
+    # Data normalizer
     - { resource: "@DataNormalizerBundle/Resources/config/commands.yml" }
     - { resource: "@DataNormalizerBundle/Resources/config/services.yml" }
 
