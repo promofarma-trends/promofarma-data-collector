@@ -27,7 +27,7 @@ interface KeywordRepository
      * @param Keyword $keyword
      * @return mixed
      */
-    public function save(Keyword $keyword);
+    public function create(Keyword $keyword);
     
     /**
      * Update one keyword
@@ -44,4 +44,11 @@ interface KeywordRepository
      * @return mixed
      */
     public function delete(Keyword $keyword);
+    
+    /**
+     * Truncate table
+     *
+     * @return mixed
+     */
+    public function deleteAll();
 }

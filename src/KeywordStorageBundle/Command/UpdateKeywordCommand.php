@@ -8,14 +8,18 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AddKeywordCommand extends ContainerAwareCommand
+class UpdateKeywordCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:keyword-storage:add')
+            ->setName('app:keyword-storage:update')
             ->addArgument(
-                'keyword',
+                'old_keyword',
+                InputArgument::REQUIRED
+            )
+            ->addArgument(
+                'new_keyword',
                 InputArgument::REQUIRED
             );
     }
@@ -30,30 +34,25 @@ class AddKeywordCommand extends ContainerAwareCommand
             '<fg=green>Keyword Storage Manager</>',
             '<fg=yellow>=======================</>',
             '',
-            '-> Adding keywords...',
+            '-> Updating keyword: ' .
+                '<fg=red>' . $input->getArgument('old_keyword') . '</>' .
+                ' to ' .
+                '<fg=green>' . $input->getArgument('new_keyword') . '</>' .
+                ' ...'
         ]);
-    
-        $keywords = $this->splitKeywords(
-            $input->getArgument('keyword')
-        );
         
         /** @var ManageKeyword $keywordsManager */
         $keywordsManager = $this
             ->getContainer()
             ->get('keyword_storage.manage_keywords_use_case');
-        $keywordsManager->addMany($keywords);
-    
+        $keywordsManager->updateOne(
+            $input->getArgument('old_keyword'),
+            $input->getArgument('new_keyword')
+        );
+        
         $output->writeln([
             '',
-            '<fg=green>Keyword(s) added successfully!</>'
+            '<fg=green>Keyword <fg=yellow>updated successfully!</>'
         ]);
-    }
-    
-    private function splitKeywords(string $keywordsString)
-    {
-        $cleanKeywordsString = str_replace(' ', '', $keywordsString);
-        $keywordsArray =  explode(',', $cleanKeywordsString);
-        
-        return $keywordsArray;
     }
 }

@@ -37,6 +37,12 @@ class Keyword
         return $this->name;
     }
     
+    /** @param string $name */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+    
     /** @return DateTime */
     public function getLastFetch(): DateTime
     {

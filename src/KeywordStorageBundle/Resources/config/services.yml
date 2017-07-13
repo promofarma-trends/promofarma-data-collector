@@ -6,7 +6,7 @@ services:
   # Keywords manager
   #
   keyword_storage.manage_keywords_use_case:
-    class: KeyworStorageBundle\Services\ManageKeyword
+    class: KeywordStorageBundle\Services\ManageKeyword
     arguments:
       - "@keyword_storage.keyword_repository"
 
@@ -14,10 +14,10 @@ services:
   # Keywords repository
   #
   keyword_storage.keyword_repository:
-    class: KeyworStorageBundle\Infrastructure\DoctrineKeywordRepository
+    class: KeywordStorageBundle\Infrastructure\DoctrineKeywordRepository
     factory:
       - "@doctrine.orm.default_entity_manager"
       - "getRepository"
     arguments:
-      - "KeywordStorageBundle:keyword"
+      - "KeywordStorageBundle:Keyword"
 

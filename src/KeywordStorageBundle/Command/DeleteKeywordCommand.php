@@ -1,5 +1,6 @@
 <?php
 
+
 namespace KeywordStorageBundle\Command;
 
 use KeywordStorageBundle\Services\ManageKeyword;
@@ -8,12 +9,12 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AddKeywordCommand extends ContainerAwareCommand
+class DeleteKeywordCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:keyword-storage:add')
+            ->setName('app:keyword-storage:delete')
             ->addArgument(
                 'keyword',
                 InputArgument::REQUIRED
@@ -30,7 +31,7 @@ class AddKeywordCommand extends ContainerAwareCommand
             '<fg=green>Keyword Storage Manager</>',
             '<fg=yellow>=======================</>',
             '',
-            '-> Adding keywords...',
+            '-> Deleting keyword...',
         ]);
     
         $keywords = $this->splitKeywords(
@@ -41,11 +42,11 @@ class AddKeywordCommand extends ContainerAwareCommand
         $keywordsManager = $this
             ->getContainer()
             ->get('keyword_storage.manage_keywords_use_case');
-        $keywordsManager->addMany($keywords);
-    
+        $keywordsManager->deleteMany($keywords);
+        
         $output->writeln([
             '',
-            '<fg=green>Keyword(s) added successfully!</>'
+            '<fg=green>Keyword(s) deleted successfully!</>'
         ]);
     }
     

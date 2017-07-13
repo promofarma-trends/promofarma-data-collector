@@ -1,6 +1,6 @@
 KeywordStorageBundle\Entity\Keyword:
   type: entity
-  repositoryClass: KeywordStorageBundle\Repository\DoctrineKeywordRepository
+  repositoryClass: KeywordStorageBundle\Infrastructure\DoctrineKeywordRepository
   table: keywords
   id:
     id:
@@ -11,6 +11,8 @@ KeywordStorageBundle\Entity\Keyword:
     name:
       type: string
       length: 100
+      unique: true
     lastFetch:
       type: datetime
       column: last_fetch
+      nullable: true

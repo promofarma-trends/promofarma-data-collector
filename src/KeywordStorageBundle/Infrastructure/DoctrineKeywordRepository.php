@@ -29,7 +29,7 @@ class DoctrineKeywordRepository extends EntityRepository implements KeywordRepos
     /**
      * @{inheritdoc}
      */
-    public function save(Keyword $keyword)
+    public function create(Keyword $keyword)
     {
         $entityManager = $this->getEntityManager();
         $entityManager->persist($keyword);
@@ -52,5 +52,19 @@ class DoctrineKeywordRepository extends EntityRepository implements KeywordRepos
     {
         $entityManager = $this->getEntityManager();
         $entityManager->remove($keyword);
+        $entityManager->flush($keyword);
+    }
+    
+    /**
+     * @{inheritdoc}
+     */
+    public function deleteAll()
+    {
+        $connection = $this->getEntityManager()->getConnection();
+        $platform   = $connection->getDatabasePlatform();
+    
+        $connection->executeUpdate(
+            $platform->getTruncateTableSQL('keywords', true)
+        );
     }
 }
