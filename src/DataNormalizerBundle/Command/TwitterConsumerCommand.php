@@ -3,20 +3,17 @@
 namespace DataNormalizerBundle\Command;
 
 
-use DataNormalizerBundle\Services\InstagramPostAdapter;
 use DataNormalizerBundle\Services\EnqueueNormalizedPost;
 use DataNormalizerBundle\Services\TwitterPostAdapter;
 use RSQueue\Command\ConsumerCommand;
 use RSQueue\Services\Consumer;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DataNormalizerConsumerCommand
  *
  * @package DataNormalizerBundle\Command
  */
-class DataNormalizeConsumerCommand extends ConsumerCommand
+class TwitterConsumerCommand extends ConsumerCommand implements QueueConsumerCommand
 {
     /**
      * @var EnqueueNormalizedPost
@@ -45,8 +42,8 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     protected function configure()
     {
         $this
-            ->setName('mineur:queue-consumer:normalize')
-            ->setDescription('RSQueue Tweet consumer command');
+            ->setName('collector:rsqueue:twitter:consume')
+            ->setDescription('RSQueue consumer and normalizer command');
         
         parent::configure();
     }
@@ -58,11 +55,7 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
     {
         $this->addQueue(
             'queues:tweets',
-            'normalizeTweet'
-        );
-        $this->addQueue(
-            'queues:instagram_posts',
-            'normalizeInstagramPost'
+            'consume'
         );
     }
     
@@ -74,26 +67,10 @@ class DataNormalizeConsumerCommand extends ConsumerCommand
         return true;
     }
     
-    public function normalizeTweet(
-        InputInterface $input,
-        OutputInterface $output,
-        $payload
-    )
+    public function consume($payload)
     {
         $tweet = unserialize($payload);
         $post  = (new TwitterPostAdapter($tweet))->normalize();
-        
-        $this->sqsEnqueue->enqueue($post);
-    }
-    
-    public function normalizeInstagramPost(
-        InputInterface $input,
-        OutputInterface $output,
-        $payload
-    )
-    {
-        $instagramPost = unserialize($payload);
-        $post          = (new InstagramPostAdapter($instagramPost))->normalize();
         
         $this->sqsEnqueue->enqueue($post);
     }

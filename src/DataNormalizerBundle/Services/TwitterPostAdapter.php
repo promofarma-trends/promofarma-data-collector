@@ -8,6 +8,7 @@ use DataNormalizerBundle\Model\PostType\Coordinates;
 use DataNormalizerBundle\Model\PostType\Location;
 use DataNormalizerBundle\Model\PostType\Score;
 use DataNormalizerBundle\Model\PostType\Uuid;
+use Mineur\TwitterStreamApi\Model\RetweetedStatus;
 use Mineur\TwitterStreamApi\Model\Tweet;
 use DateTime;
 
@@ -118,10 +119,13 @@ class TwitterPostAdapter implements PostInterface
             /** @var RetweetedStatus $retweet */
             $retweet = $this->tweet->getRetweetedStatus();
             $userFollowers = $retweet->getUser()->getFollowersCount();
-            $retweetsCount = $retweet->getRetweetCount();
             $favsCount = $retweet->getFavoriteCount();
             
-            $score = ($userFollowers * 20) / 100; // 20% of user followers
+            $score = ($favsCount / $userFollowers) * 10; // 10 is the max score you can earn by post
+        }
+    
+        if ($score > 10) {
+            $score = 10;
         }
         
         return Score::fromInteger($score);

@@ -30,7 +30,7 @@ class InstagramPostAdapter implements PostInterface
     }
     
     /** @return Post */
-    public function normalize()
+    public function normalize(): Post
     {
         $uuid      = Uuid::generate();
         $content   = $this->instagramPost->getComment();
@@ -58,10 +58,52 @@ class InstagramPostAdapter implements PostInterface
     }
     
     /**
+     * @todo: "this needs a better implementation
+     *         We did it like this because we don't have access
+     *         to the user followers to do a better calc"
+     *
      * @return Score
      */
     private function composeScore()
     {
-        return Score::fromInteger(5);
+        $likesCount = $this->instagramPost->getLikesCount();
+        $score = 0;
+        
+        if ($likesCount == 0) {
+            $score = 0;
+        }
+        if ($likesCount > 0 && $likesCount <= 50) {
+            $score = 1;
+        }
+        if ($likesCount > 50 && $likesCount <= 100) {
+            $score = 2;
+        }
+        if ($likesCount > 100 && $likesCount <= 200) {
+            $score = 3;
+        }
+        if ($likesCount > 200 && $likesCount <= 300) {
+            $score = 4;
+        }
+        if ($likesCount > 300 && $likesCount <= 500) {
+            $score = 5;
+        }
+        if ($likesCount > 500 && $likesCount <= 1000) {
+            $score = 6;
+        }
+        if ($likesCount > 500 && $likesCount <= 1000) {
+            $score = 7;
+        }
+        if ($likesCount > 1000 && $likesCount <= 5000) {
+            $score = 8;
+        }
+        if ($likesCount > 5000 && $likesCount <= 10000) {
+            $score = 9;
+        }
+        if ($likesCount > 10000) {
+            $score = 10;
+        }
+        dump('----- SCORE ----', $score);
+        
+        return Score::fromInteger($score);
     }
 }

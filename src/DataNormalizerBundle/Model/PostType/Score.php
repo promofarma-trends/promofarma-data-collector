@@ -21,14 +21,14 @@ class Score
     
     private function __construct(int $score)
     {
-//        $this->ensureIsValidScore($score);
+        $this->ensureIsValidScore($score);
         
         $this->score = $score;
     }
     
     private function ensureIsValidScore(int $score)
     {
-        if ($score > 100 || $score < 0) {
+        if ($score > 10 || $score <= 0) {
             throw new NotValidScoreException(
                 'Score must be an integer between 0 and 100'
             );

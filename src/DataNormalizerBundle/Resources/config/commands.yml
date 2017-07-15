@@ -2,8 +2,16 @@ services:
     #
     # Data normalizer consumer
     #
-    app.command.twitter_data_normalize_consumer_command:
-        class: DataNormalizerBundle\Command\DataNormalizeConsumerCommand
+    app.command.twitter_consumer_command:
+        class: DataNormalizerBundle\Command\TwitterConsumerCommand
+        arguments:
+          - "@rs_queue.consumer"
+          - "@data_normalizer.sqs.enqueue"
+        tags:
+            - { name: console.command }
+
+    app.command.instagram_consumer_command:
+        class: DataNormalizerBundle\Command\InstagramConsumerCommand
         arguments:
           - "@rs_queue.consumer"
           - "@data_normalizer.sqs.enqueue"
