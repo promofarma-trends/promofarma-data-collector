@@ -42,8 +42,9 @@ class TwitterConsumerCommand extends ConsumerCommand implements QueueConsumerCom
     protected function configure()
     {
         $this
-            ->setName('collector:rsqueue:twitter:consume')
-            ->setDescription('RSQueue consumer and normalizer command');
+            ->setName('data-collector:twitter-queue:consume')
+            ->setDescription('Consume Twitter posts from RSqueue and executes the Normalizer service.')
+        ;
         
         parent::configure();
     }

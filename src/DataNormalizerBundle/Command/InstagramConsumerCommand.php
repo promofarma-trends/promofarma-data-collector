@@ -37,8 +37,9 @@ class InstagramConsumerCommand extends ConsumerCommand implements QueueConsumerC
     protected function configure()
     {
         $this
-            ->setName('collector:rsqueue:instagram:consume')
-            ->setDescription('RSQueue consumer and normalizer Instagram posts command');
+            ->setName('data-collector:instagram-queue:consume')
+            ->setDescription('Consume Instagram posts from RSqueue and executes the Normalizer service.')
+        ;
         
         parent::configure();
     }

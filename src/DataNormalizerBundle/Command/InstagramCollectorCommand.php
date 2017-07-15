@@ -13,7 +13,10 @@ class InstagramCollectorCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
-        $this->setName('collector:queue:produce-tweets');
+        $this
+            ->setName('data-collector:instagram-queue:produce')
+            ->setDescription('Collects Instagram posts based on the Keywords Storage tags and enqueues the result into RSQueue.')
+        ;
     }
     
     protected function execute(
