@@ -2,7 +2,7 @@
 
 namespace KeywordStorageBundle\Command;
 
-use KeywordStorageBundle\Services\ManageKeyword;
+use KeywordStorageBundle\Services\CreateKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -37,10 +37,10 @@ class AddKeywordCommand extends ContainerAwareCommand
             $input->getArgument('keyword')
         );
         
-        /** @var ManageKeyword $keywordsManager */
+        /** @var CreateKeywords $keywordsManager */
         $keywordsManager = $this
             ->getContainer()
-            ->get('keyword_storage.manage_keywords_use_case');
+            ->get('keyword_storage.create_keywords_use_case');
         $keywordsManager->addMany($keywords);
     
         $output->writeln([

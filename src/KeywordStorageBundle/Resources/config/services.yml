@@ -5,8 +5,18 @@ services:
   #
   # Keywords manager
   #
-  keyword_storage.manage_keywords_use_case:
-    class: KeywordStorageBundle\Services\ManageKeyword
+  keyword_storage.create_keywords_use_case:
+    class: KeywordStorageBundle\Services\CreateKeywords
+    arguments:
+      - "@keyword_storage.keyword_repository"
+
+  keyword_storage.modify_keywords_use_case:
+    class: KeywordStorageBundle\Services\ModifyKeywords
+    arguments:
+      - "@keyword_storage.keyword_repository"
+
+  keyword_storage.get_keywords_use_case:
+    class: KeywordStorageBundle\Services\GetKeywords
     arguments:
       - "@keyword_storage.keyword_repository"
 

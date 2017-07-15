@@ -44,7 +44,7 @@ class UpdateKeywordCommand extends ContainerAwareCommand
         /** @var ManageKeyword $keywordsManager */
         $keywordsManager = $this
             ->getContainer()
-            ->get('keyword_storage.manage_keywords_use_case');
+            ->get('keyword_storage.modify_keywords_use_case');
         $keywordsManager->updateOne(
             $input->getArgument('old_keyword'),
             $input->getArgument('new_keyword')

@@ -3,7 +3,7 @@
 
 namespace KeywordStorageBundle\Command;
 
-use KeywordStorageBundle\Services\ManageKeyword;
+use KeywordStorageBundle\Services\ModifyKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,10 +38,10 @@ class DeleteKeywordCommand extends ContainerAwareCommand
             $input->getArgument('keyword')
         );
         
-        /** @var ManageKeyword $keywordsManager */
+        /** @var ModifyKeywords $keywordsManager */
         $keywordsManager = $this
             ->getContainer()
-            ->get('keyword_storage.manage_keywords_use_case');
+            ->get('keyword_storage.modify_keywords_use_case');
         $keywordsManager->deleteMany($keywords);
         
         $output->writeln([
