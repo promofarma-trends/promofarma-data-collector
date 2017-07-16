@@ -2,7 +2,8 @@
 
 namespace KeywordStorageBundle\Entity;
 
-use Symfony\Component\Validator\Constraints\DateTime;
+
+use DateTime;
 
 class Keyword
 {
@@ -44,7 +45,7 @@ class Keyword
     }
     
     /** @return DateTime */
-    public function getLastFetch(): DateTime
+    public function getLastFetch(): ? DateTime
     {
         return $this->lastFetch;
     }

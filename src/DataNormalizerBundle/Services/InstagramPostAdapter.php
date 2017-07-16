@@ -102,7 +102,6 @@ class InstagramPostAdapter implements PostInterface
         if ($likesCount > 10000) {
             $score = 10;
         }
-        dump('----- SCORE ----', $score);
         
         return Score::fromInteger($score);
     }

@@ -28,6 +28,20 @@ final class GetKeywords
     
     public function getOneNotParsedBefore()
     {
-        // @todo: implement method
+        $all = count($this->repository->listAll());
+        
+        $id = rand(0, $all);
+        /** @var Keyword $keyword */
+        $keyword = $this
+            ->repository
+            ->findOneById($id);
+        
+        while($keyword->getLastFetch() !== null) {
+            $keyword = $this
+                ->repository
+                ->findOneById($id);
+        }
+        
+        return $keyword;
     }
 }

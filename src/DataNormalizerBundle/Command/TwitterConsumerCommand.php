@@ -7,6 +7,8 @@ use DataNormalizerBundle\Services\EnqueueNormalizedPost;
 use DataNormalizerBundle\Services\TwitterPostAdapter;
 use RSQueue\Command\ConsumerCommand;
 use RSQueue\Services\Consumer;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DataNormalizerConsumerCommand
@@ -68,11 +70,30 @@ class TwitterConsumerCommand extends ConsumerCommand implements QueueConsumerCom
         return true;
     }
     
-    public function consume($payload)
+    public function consume(
+        InputInterface $input,
+        OutputInterface $output,
+        $payload
+    )
     {
+        $output->writeln([
+            '<fg=yellow> > RSqueue:</> Fetching tweet... </>',
+            '   |'
+        ]);
+        
         $tweet = unserialize($payload);
         $post  = (new TwitterPostAdapter($tweet))->normalize();
-        
+    
+        $output->writeln([
+            '<fg=green>   √ Normalized -></> ' . $post->getUuid(),
+            '   |'
+        ]);
+
         $this->sqsEnqueue->enqueue($post);
+    
+        $output->writeln([
+            '<fg=green>   √ Enqueued to SQS</>',
+            ''
+        ]);
     }
 }

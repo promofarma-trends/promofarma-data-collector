@@ -60,7 +60,7 @@ class TwitterPostAdapter implements PostInterface
         );
     }
     
-    private function composeLocation(): Location
+    private function composeLocation(): ? Location
     {
         $tweetPlace = $this->tweet->getPlaces();
         $tweetCoordinates = $this->tweet->getCoordinates();
@@ -123,9 +123,9 @@ class TwitterPostAdapter implements PostInterface
             
             $score = ($favsCount / $userFollowers) * 10; // 10 is the max score you can earn by post
         }
-    
-        if ($score > 10) {
-            $score = 10;
+        
+        if ($score < 0 && $score > 10) {
+            $score = 0;
         }
         
         return Score::fromInteger($score);

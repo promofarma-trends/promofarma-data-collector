@@ -32,7 +32,7 @@ class TwitterCollectorCommand extends ContainerAwareCommand
         
         $command = $this
             ->getApplication()
-            ->find('mineur:twitter-stream:consume');
+            ->find('mineur:twitter-stream:enqueue');
         $input   = new ArrayInput([
             'keywords' => $keywordsList
         ]);

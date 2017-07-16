@@ -21,6 +21,14 @@ class DoctrineKeywordRepository extends EntityRepository implements KeywordRepos
     /**
      * @{inheritdoc}
      */
+    public function findOneById(int $id)
+    {
+        return $this->find($id);
+    }
+    
+    /**
+     * @{inheritdoc}
+     */
     public function listAll()
     {
         return $this->findAll();

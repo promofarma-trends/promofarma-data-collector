@@ -28,9 +28,9 @@ class Score
     
     private function ensureIsValidScore(int $score)
     {
-        if ($score > 10 || $score <= 0) {
+        if ($score > 10 || $score < 0) {
             throw new NotValidScoreException(
-                'Score must be an integer between 0 and 100'
+                'Score must be an integer between 0 and 10'
             );
         }
     }
@@ -39,7 +39,6 @@ class Score
     {
         return new self($score);
     }
-    
     
     /** @return integer */
     public function get(): int

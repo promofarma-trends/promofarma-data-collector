@@ -3,6 +3,7 @@
 namespace DataNormalizerBundle\Command;
 
 
+use DateTime;
 use KeywordStorageBundle\Services\GetKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -15,7 +16,10 @@ class InstagramCollectorCommand extends ContainerAwareCommand
     {
         $this
             ->setName('data-collector:instagram-queue:produce')
-            ->setDescription('Collects Instagram posts based on the Keywords Storage tags and enqueues the result into RSQueue.')
+            ->setDescription('
+                Collects Instagram posts based on the Keywords
+                Storage tags and enqueues the result into RSQueue.
+            ')
         ;
     }
     
@@ -28,15 +32,26 @@ class InstagramCollectorCommand extends ContainerAwareCommand
         $getKeywords  = $this
             ->getContainer()
             ->get('keyword_storage.get_keywords_use_case');
-        $keywordsList = $getKeywords->getAllToString();
+        $keyword = $getKeywords->getOneNotParsedBefore();
         
+        $modifyKeyword = $this
+            ->getContainer()
+            ->get('keyword_storage.modify_keywords_use_case');
+        $modifyKeyword->updateLastFetched(
+            $keyword,
+            new DateTime('now')
+        );
+    
+        /**
+         * Execute command
+         */
         $command = $this
             ->getApplication()
-            ->find('mineur:instagram-parser:consume');
+            ->find('mineur:instagram-parser:enqueue');
         $input   = new ArrayInput([
-            'keywords' => $keywordsList
+            'keyword' => $keyword->getName()
         ]);
-        
-        $command->run($input, $output);
+        $exitCode = $command->run($input, $output);
+        dump($exitCode);
     }
 }

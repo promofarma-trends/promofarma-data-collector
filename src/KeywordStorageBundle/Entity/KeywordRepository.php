@@ -15,6 +15,14 @@ interface KeywordRepository
     public function findOneByName(string $name);
     
     /**
+     * Find one keyword by name
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function findOneById(int $id);
+    
+    /**
      * List all keywords
      *
      * @return mixed

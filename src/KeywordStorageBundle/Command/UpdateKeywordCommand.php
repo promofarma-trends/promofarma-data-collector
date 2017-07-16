@@ -3,6 +3,7 @@
 namespace KeywordStorageBundle\Command;
 
 use KeywordStorageBundle\Services\ManageKeyword;
+use KeywordStorageBundle\Services\ModifyKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,11 +42,11 @@ class UpdateKeywordCommand extends ContainerAwareCommand
                 ' ...'
         ]);
         
-        /** @var ManageKeyword $keywordsManager */
+        /** @var ModifyKeywords $keywordsManager */
         $keywordsManager = $this
             ->getContainer()
             ->get('keyword_storage.modify_keywords_use_case');
-        $keywordsManager->updateOne(
+        $keywordsManager->updateOneByName(
             $input->getArgument('old_keyword'),
             $input->getArgument('new_keyword')
         );

@@ -3,6 +3,8 @@
 namespace KeywordStorageBundle\Services;
 
 
+use DateTime;
+use KeywordStorageBundle\Entity\Keyword;
 use KeywordStorageBundle\Entity\KeywordRepository;
 
 final class ModifyKeywords
@@ -33,7 +35,7 @@ final class ModifyKeywords
         }
     }
     
-    public function updateOne(
+    public function updateOneByName(
         string $oldKeyword,
         string $newKeyword
     )
@@ -45,5 +47,16 @@ final class ModifyKeywords
             
             $this->repository->update($keyword);
         }
+    }
+    
+    public function updateLastFetched(
+        Keyword $keyword,
+        DateTime $dateTime
+    )
+    {
+        /** @var Keyword $keyword */
+        $keyword->setLastFetch($dateTime);
+        
+        $this->repository->update($keyword);
     }
 }

@@ -49,16 +49,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.31.2",
+            "version": "3.31.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "582e7764e0fa389c3248450cd6db2564dd656d99"
+                "reference": "bb28d91e5766539224f06240472e5184bfddca66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/582e7764e0fa389c3248450cd6db2564dd656d99",
-                "reference": "582e7764e0fa389c3248450cd6db2564dd656d99",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bb28d91e5766539224f06240472e5184bfddca66",
+                "reference": "bb28d91e5766539224f06240472e5184bfddca66",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-07-06T21:11:49+00:00"
+            "time": "2017-07-14T21:17:45+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1294,12 +1294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mineur/instagram-parser.git",
-                "reference": "a954655bce556b54fc82f698552d2155eda9d28a"
+                "reference": "802e914afbdf0b991b72367471074369789796bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mineur/instagram-parser/zipball/a954655bce556b54fc82f698552d2155eda9d28a",
-                "reference": "a954655bce556b54fc82f698552d2155eda9d28a",
+                "url": "https://api.github.com/repos/mineur/instagram-parser/zipball/802e914afbdf0b991b72367471074369789796bd",
+                "reference": "802e914afbdf0b991b72367471074369789796bd",
                 "shasum": ""
             },
             "require": {
@@ -1330,7 +1330,7 @@
                 }
             ],
             "description": "PHP parser to consume the instagram feed.",
-            "time": "2017-07-11 15:45:22"
+            "time": "2017-07-16 00:04:44"
         },
         {
             "name": "mineur/instagram-parser-bundle",
@@ -1338,12 +1338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mineur/instagram-parser-bundle.git",
-                "reference": "7982338b618178dc8599f50080f2db8928f69999"
+                "reference": "b8fbae87cd22277d6d633133ed2e9d03bc3b1a4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mineur/instagram-parser-bundle/zipball/7982338b618178dc8599f50080f2db8928f69999",
-                "reference": "7982338b618178dc8599f50080f2db8928f69999",
+                "url": "https://api.github.com/repos/mineur/instagram-parser-bundle/zipball/b8fbae87cd22277d6d633133ed2e9d03bc3b1a4a",
+                "reference": "b8fbae87cd22277d6d633133ed2e9d03bc3b1a4a",
                 "shasum": ""
             },
             "require": {
@@ -1379,7 +1379,7 @@
                 }
             ],
             "description": "A bundle integration of Mineur instagram parser for Symfony",
-            "time": "2017-07-09 22:22:48"
+            "time": "2017-07-16 21:42:28"
         },
         {
             "name": "mineur/twitter-stream-api",
@@ -1387,12 +1387,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mineur/twitter-stream-api.git",
-                "reference": "9e7021cde07c7f90963ffee2d7fc83f9177bcae5"
+                "reference": "c1af9fbbcca49078098f636ae3e9a0f54452de85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mineur/twitter-stream-api/zipball/9e7021cde07c7f90963ffee2d7fc83f9177bcae5",
-                "reference": "9e7021cde07c7f90963ffee2d7fc83f9177bcae5",
+                "url": "https://api.github.com/repos/mineur/twitter-stream-api/zipball/c1af9fbbcca49078098f636ae3e9a0f54452de85",
+                "reference": "c1af9fbbcca49078098f636ae3e9a0f54452de85",
                 "shasum": ""
             },
             "require": {
@@ -1424,7 +1424,7 @@
                 }
             ],
             "description": "Collector of streaming twitter data",
-            "time": "2017-06-25 15:11:57"
+            "time": "2017-07-16 21:56:51"
         },
         {
             "name": "mineur/twitter-stream-api-bundle",
@@ -1432,12 +1432,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mineur/twitter-stream-api-bundle.git",
-                "reference": "776f606cff8b7a225925d605665cb87973cae06f"
+                "reference": "0ad4dabbb1c04d693b627b87c4a543a01f559866"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mineur/twitter-stream-api-bundle/zipball/776f606cff8b7a225925d605665cb87973cae06f",
-                "reference": "776f606cff8b7a225925d605665cb87973cae06f",
+                "url": "https://api.github.com/repos/mineur/twitter-stream-api-bundle/zipball/0ad4dabbb1c04d693b627b87c4a543a01f559866",
+                "reference": "0ad4dabbb1c04d693b627b87c4a543a01f559866",
                 "shasum": ""
             },
             "require": {
@@ -1473,7 +1473,7 @@
                 }
             ],
             "description": "A bundle integration of Mineur twitter stream api for Symfony",
-            "time": "2017-07-01 23:48:48"
+            "time": "2017-07-16 21:43:59"
         },
         {
             "name": "monolog/monolog",
@@ -2800,16 +2800,16 @@
     "packages-dev": [
         {
             "name": "sensio/generator-bundle",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "37f9f4e165b033fb76cc2320838321cc57140e65"
+                "reference": "535417a99ac1b387df3bfbc0c060122c24665b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/37f9f4e165b033fb76cc2320838321cc57140e65",
-                "reference": "37f9f4e165b033fb76cc2320838321cc57140e65",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/535417a99ac1b387df3bfbc0c060122c24665b78",
+                "reference": "535417a99ac1b387df3bfbc0c060122c24665b78",
                 "shasum": ""
             },
             "require": {
@@ -2850,7 +2850,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2017-03-15T01:02:10+00:00"
+            "time": "2017-07-12T17:28:00+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",

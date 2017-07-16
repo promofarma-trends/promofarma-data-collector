@@ -87,7 +87,9 @@ class Post
             'lang'      => $this->lang,
             'media'     => $this->media,
             'tags'      => $this->tags,
-            'location'  => $this->location->toArray(),
+            'location'  => (null !== $this->location)
+                ? $this->location->toArray()
+                : null,
             'score'     => $this->score->get(),
             'created_at' => $this->createdAt,
             'source'    => $this->source,
