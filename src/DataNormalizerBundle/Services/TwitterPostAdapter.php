@@ -45,7 +45,10 @@ class TwitterPostAdapter implements PostInterface
         $tags     = $this->composeTags();
         $location = $this->composeLocation();
         $score    = $this->composeScore();
-        $createdAt = new DateTime('now');
+        $createdAt = DateTime::createFromFormat(
+            'U',
+            $this->tweet->getTimestampMs()
+        );
     
         return new Post(
             $uuid,
