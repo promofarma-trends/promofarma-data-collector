@@ -19,14 +19,14 @@ class Score
 {
     private $score;
     
-    private function __construct(int $score)
+    private function __construct(float $score)
     {
         $this->ensureIsValidScore($score);
         
         $this->score = $score;
     }
     
-    private function ensureIsValidScore(int $score)
+    private function ensureIsValidScore(float $score)
     {
         if ($score > 10 || $score < 0) {
             throw new NotValidScoreException(
@@ -35,9 +35,10 @@ class Score
         }
     }
     
-    public static function fromInteger(string $score): self
+    public static function fromInteger(float $score): self
     {
-        return new self($score);
+        dump($score);
+        return new self((float) $score);
     }
     
     /** @return integer */

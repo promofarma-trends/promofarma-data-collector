@@ -103,6 +103,8 @@ class InstagramPostAdapter implements PostInterface
             $score = 10;
         }
         
-        return Score::fromInteger($score);
+        return Score::fromInteger(
+            number_format((float)$score, 2, '.', '')
+        );
     }
 }

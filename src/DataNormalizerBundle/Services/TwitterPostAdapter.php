@@ -125,7 +125,6 @@ class TwitterPostAdapter implements PostInterface
             $favsCount = $retweet->getFavoriteCount();
             
             if (null !== $favsCount) {
-                
                 $score = ($favsCount / $userFollowers) * 10; // 10 is the max score you can earn by post
             }
         }
@@ -134,6 +133,8 @@ class TwitterPostAdapter implements PostInterface
             $score = 0;
         }
         
-        return Score::fromInteger($score);
+        return Score::fromInteger(
+            number_format((float)$score, 2, '.', '')
+        );
     }
 }
