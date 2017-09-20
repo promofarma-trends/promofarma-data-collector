@@ -2,10 +2,10 @@
 
 namespace KeywordStorageBundle\Command;
 
+use KeywordStorageBundle\Services\CreateKeywords;
 use KeywordStorageBundle\Services\ManageKeyword;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -48,10 +48,10 @@ class IndexKeywordsCommand extends ContainerAwareCommand
         $progress->start();
         
         foreach ($keywords as $keyword) {
-            /** @var ManageKeyword $keywordsManager */
+            /** @var CreateKeywords $keywordsManager */
             $keywordsManager = $this
                 ->getContainer()
-                ->get('keyword_storage.manage_keywords_use_case');
+                ->get('keyword_storage.create_keywords_use_case');
             $keywordsManager->addOne($keyword);
         
             $progress->advance();
