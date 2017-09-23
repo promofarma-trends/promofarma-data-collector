@@ -1,6 +1,5 @@
-Demo App
+Promofarma Data Collector
 ===================
-> This is a Symfony demo application to test all Mineur libraries and bundles.
 
 ## Installation
 ```shell
