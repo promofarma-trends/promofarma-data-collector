@@ -1,14 +1,14 @@
 <?php
 
-namespace DataNormalizerBundle\Services;
+namespace DataNormalizer\Application;
 
-use DataNormalizerBundle\Model\Post;
+use DataNormalizer\Domain\Model\Post;
 use SqsPhpBundle\Client\Client;
 
 /**
  * Class SqsEnqueue
  *
- * @package DataNormalizerBundle\Services
+ * @package Bundle\Services
  */
 class EnqueueNormalizedPost
 {

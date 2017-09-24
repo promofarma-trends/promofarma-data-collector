@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * Class DataNormalizerDependencyInjection
  *
- * @package DataNormalizerBundle\DependencyInjection
+ * @package Bundle\DependencyInjection
  */
 class DataNormalizerDependencyInjection extends Extension
 {

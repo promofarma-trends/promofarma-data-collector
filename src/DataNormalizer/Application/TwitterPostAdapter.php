@@ -1,13 +1,13 @@
 <?php
 
-namespace DataNormalizerBundle\Services;
+namespace DataNormalizer\Application;
 
-use DataNormalizerBundle\Model\Post;
-use DataNormalizerBundle\Model\PostInterface;
-use DataNormalizerBundle\Model\PostType\Coordinates;
-use DataNormalizerBundle\Model\PostType\Location;
-use DataNormalizerBundle\Model\PostType\Score;
-use DataNormalizerBundle\Model\PostType\Uuid;
+use DataNormalizer\Domain\Model\Post;
+use DataNormalizer\Domain\Model\PostInterface;
+use DataNormalizer\Domain\Model\PostType\Coordinates;
+use DataNormalizer\Domain\Model\PostType\Location;
+use DataNormalizer\Domain\Model\PostType\Score;
+use DataNormalizer\Domain\Model\PostType\Uuid;
 use Mineur\TwitterStreamApi\Model\RetweetedStatus;
 use Mineur\TwitterStreamApi\Model\Tweet;
 use DateTime;
@@ -15,7 +15,7 @@ use DateTime;
 /**
  * Class TwitterPostAdapter
  *
- * @package DataNormalizerBundle\Bundles
+ * @package Bundle\Bundles
  */
 class TwitterPostAdapter implements PostInterface
 {
@@ -125,7 +125,8 @@ class TwitterPostAdapter implements PostInterface
             $favsCount = $retweet->getFavoriteCount();
             
             if (null !== $favsCount) {
-                $score = ($favsCount / $userFollowers) * 10; // 10 is the max score you can earn by post
+                $score = ($favsCount / $userFollowers) * 10;
+                // 10 is the max score you can earn by post
             }
         }
         

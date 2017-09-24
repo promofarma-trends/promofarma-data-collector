@@ -1,13 +1,13 @@
 <?php
 
-namespace DataNormalizerBundle\Exception;
+namespace DataNormalizer\Domain\Exception;
 
 use Exception;
 
 /**
  * Class NotValidScoreException
  *
- * @package DataNormalizerBundle\Exception
+ * @package Bundle\Exception
  */
 class NotValidScoreException extends Exception
 {

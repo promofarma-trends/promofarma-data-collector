@@ -1,12 +1,12 @@
 <?php
 
-namespace DataNormalizerBundle\Repository;
+namespace DataNormalizer\Bundle\Repository\Repository;
 
 
 /**
  * Interface SqsQueueRepository
  *
- * @package DataNormalizerBundle\Repository
+ * @package Bundle\Repository
  */
 interface PostQueueRepository
 {

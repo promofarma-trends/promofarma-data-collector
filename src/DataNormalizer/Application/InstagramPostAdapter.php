@@ -1,18 +1,18 @@
 <?php
 
-namespace DataNormalizerBundle\Services;
+namespace DataNormalizer\Application;
 
-use DataNormalizerBundle\Model\Post;
-use DataNormalizerBundle\Model\PostInterface;
-use DataNormalizerBundle\Model\PostType\Score;
-use DataNormalizerBundle\Model\PostType\Uuid;
+use DataNormalizer\Domain\Model\Post;
+use DataNormalizer\Domain\Model\PostInterface;
+use DataNormalizer\Domain\Model\PostType\Score;
+use DataNormalizer\Domain\Model\PostType\Uuid;
 use DateTime;
 use Mineur\InstagramParser\Model\InstagramPost;
 
 /**
  * Class InstagramPostAdapter
  *
- * @package DataNormalizerBundle\Services
+ * @package Bundle\Services
  */
 class InstagramPostAdapter implements PostInterface
 {

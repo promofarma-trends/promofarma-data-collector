@@ -1,16 +1,20 @@
 <?php
 
-namespace DataNormalizerBundle\Command;
+namespace DataNormalizer\Infrastructure\Bundle\Command;
 
-
-use DataNormalizerBundle\Services\EnqueueNormalizedPost;
-use DataNormalizerBundle\Services\InstagramPostAdapter;
+use DataNormalizer\Application\EnqueueNormalizedPost;
+use DataNormalizer\Application\TwitterPostAdapter;
 use RSQueue\Command\ConsumerCommand;
 use RSQueue\Services\Consumer;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class InstagramConsumerCommand extends ConsumerCommand implements QueueConsumerCommand
+/**
+ * Class DataNormalizerConsumerCommand
+ *
+ * @package Bundle\Command
+ */
+class TwitterConsumerCommand extends ConsumerCommand implements QueueConsumerCommand
 {
     /**
      * @var EnqueueNormalizedPost
@@ -39,8 +43,8 @@ class InstagramConsumerCommand extends ConsumerCommand implements QueueConsumerC
     protected function configure()
     {
         $this
-            ->setName('data-collector:instagram-queue:consume')
-            ->setDescription('Consume Instagram posts from RSqueue and executes the Normalizer service.')
+            ->setName('data-collector:twitter-queue:consume')
+            ->setDescription('Consume Twitter posts from RSqueue and executes the Normalizer service.')
         ;
         
         parent::configure();
@@ -52,7 +56,7 @@ class InstagramConsumerCommand extends ConsumerCommand implements QueueConsumerC
     public function define()
     {
         $this->addQueue(
-            'queues:instagram_posts',
+            'queues:tweets',
             'consume'
         );
     }
@@ -72,18 +76,18 @@ class InstagramConsumerCommand extends ConsumerCommand implements QueueConsumerC
     )
     {
         $output->writeln([
-            '<fg=yellow> > RSqueue:</> Fetching Instagram post... </>',
+            '<fg=yellow> > RSqueue:</> Fetching tweet... </>',
             '   |'
         ]);
         
-        $instagramPost = unserialize($payload);
-        $post          = (new InstagramPostAdapter($instagramPost))->normalize();
-        
+        $tweet = unserialize($payload);
+        $post  = (new TwitterPostAdapter($tweet))->normalize();
+    
         $output->writeln([
             '<fg=green>   √ Normalized -></> ' . $post->getUuid(),
             '   |'
         ]);
-        
+
         $this->sqsEnqueue->enqueue($post);
     
         $output->writeln([

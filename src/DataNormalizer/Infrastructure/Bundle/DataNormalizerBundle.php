@@ -1,13 +1,13 @@
 <?php
 
-namespace DataNormalizerBundle;
+namespace DataNormalizer\Infrastructure\Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class DataNormalizerBundle
+ * Class Bundle
  *
- * @package DataNormalizerBundle
+ * @package Bundle
  */
 class DataNormalizerBundle extends Bundle
 {

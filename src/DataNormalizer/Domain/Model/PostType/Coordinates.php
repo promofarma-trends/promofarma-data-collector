@@ -1,11 +1,11 @@
 <?php
 
-namespace DataNormalizerBundle\Model\PostType;
+namespace DataNormalizer\Domain\Model\PostType;
 
 /**
  * Class Coordinates
  *
- * @package DataNormalizerBundle\Domain\PostType
+ * @package Bundle\Domain\PostType
  */
 class Coordinates
 {

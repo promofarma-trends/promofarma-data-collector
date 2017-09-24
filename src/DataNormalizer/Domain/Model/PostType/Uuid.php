@@ -1,11 +1,11 @@
 <?php
 
-namespace DataNormalizerBundle\Model\PostType;
+namespace DataNormalizer\Domain\Model\PostType;
 
 /**
  * Class Uuid
  *
- * @package DataNormalizerBundle\Domain\PostType
+ * @package Bundle\Domain\PostType
  */
 class Uuid
 {

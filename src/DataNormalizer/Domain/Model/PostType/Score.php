@@ -1,19 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alexhoma
- * Date: 30/05/2017
- * Time: 17:23
- */
 
-namespace DataNormalizerBundle\Model\PostType;
+namespace DataNormalizer\Domain\Model\PostType;
 
-use DataNormalizerBundle\Exception\NotValidScoreException;
+use DataNormalizer\Domain\Exception\NotValidScoreException;
 
 /**
  * Class Score
  *
- * @package DataNormalizerBundle\Domain\PostType
+ * @package Bundle\Domain\PostType
  */
 class Score
 {
@@ -37,7 +31,6 @@ class Score
     
     public static function fromInteger(float $score): self
     {
-        dump($score);
         return new self((float) $score);
     }
     

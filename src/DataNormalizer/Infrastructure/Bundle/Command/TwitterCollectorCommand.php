@@ -1,9 +1,8 @@
 <?php
 
-namespace DataNormalizerBundle\Command;
+namespace DataNormalizer\Infrastructure\Bundle\Command;
 
-
-use KeywordStorageBundle\Services\GetKeywords;
+use KeywordStorage\Application\GetKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;

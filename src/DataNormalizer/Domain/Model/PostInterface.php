@@ -1,11 +1,11 @@
 <?php
 
-namespace DataNormalizerBundle\Model;
+namespace DataNormalizer\Domain\Model;
 
 /**
  * Interface PostInterface
  *
- * @package DataNormalizerBundle\Domain
+ * @package Bundle\Domain
  */
 interface PostInterface
 {

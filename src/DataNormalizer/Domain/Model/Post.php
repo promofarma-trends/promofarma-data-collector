@@ -1,15 +1,15 @@
 <?php
 
-namespace DataNormalizerBundle\Model;
+namespace DataNormalizer\Domain\Model;
 
-use DataNormalizerBundle\Model\PostType\Location;
-use DataNormalizerBundle\Model\PostType\Score;
+use DataNormalizer\Domain\Model\PostType\Location;
+use DataNormalizer\Domain\Model\PostType\Score;
 use DateTime;
 
 /**
  * Class Post
  *
- * @package DataNormalizerBundle\Domain
+ * @package Bundle\Domain
  */
 class Post
 {

@@ -1,7 +1,6 @@
 <?php
 
-namespace DataNormalizerBundle\Command;
-
+namespace DataNormalizer\Infrastructure\Bundle\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

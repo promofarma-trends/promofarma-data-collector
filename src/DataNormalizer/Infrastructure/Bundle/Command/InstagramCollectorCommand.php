@@ -1,10 +1,10 @@
 <?php
 
-namespace DataNormalizerBundle\Command;
-
+namespace DataNormalizer\Infrastructure\Bundle\Command;
 
 use DateTime;
-use KeywordStorageBundle\Services\GetKeywords;
+use KeywordStorage\Application\GetKeywords;
+use KeywordStorage\Application\ModifyKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
@@ -31,12 +31,15 @@ class InstagramCollectorCommand extends ContainerAwareCommand
         /** @var GetKeywords $getKeywords */
         $getKeywords  = $this
             ->getContainer()
-            ->get('keyword_storage.get_keywords_use_case');
+            ->get('keyword_storage.get_keywords_use_case')
+        ;
         $keyword = $getKeywords->getOneNotParsedBefore();
         
+        /** @var ModifyKeywords $modifyKeyword */
         $modifyKeyword = $this
             ->getContainer()
-            ->get('keyword_storage.modify_keywords_use_case');
+            ->get('keyword_storage.modify_keywords_use_case')
+        ;
         $modifyKeyword->updateLastFetched(
             $keyword,
             new DateTime('now')
@@ -47,7 +50,8 @@ class InstagramCollectorCommand extends ContainerAwareCommand
          */
         $command = $this
             ->getApplication()
-            ->find('mineur:instagram-parser:enqueue');
+            ->find('mineur:instagram-parser:enqueue')
+        ;
         $input   = new ArrayInput([
             'keyword' => $keyword->getName()
         ]);

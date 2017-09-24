@@ -3,7 +3,7 @@ services:
     # Data normalizer consumer
     #
     app.command.twitter_consumer_command:
-        class: DataNormalizerBundle\Command\TwitterConsumerCommand
+        class: DataNormalizer\Infrastructure\Bundle\Command\TwitterConsumerCommand
         arguments:
           - "@rs_queue.consumer"
           - "@data_normalizer.sqs.enqueue"
@@ -11,7 +11,7 @@ services:
             - { name: console.command }
 
     app.command.instagram_consumer_command:
-        class: DataNormalizerBundle\Command\InstagramConsumerCommand
+        class: DataNormalizer\Infrastructure\Bundle\Command\InstagramConsumerCommand
         arguments:
           - "@rs_queue.consumer"
           - "@data_normalizer.sqs.enqueue"

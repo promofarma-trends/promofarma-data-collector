@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             
             /** Application Bundles */
-            new DataNormalizerBundle\DataNormalizerBundle(),
+            new DataNormalizer\Infrastructure\Bundle\DataNormalizerBundle(),
             new KeywordStorage\Infrastructure\Bundle\KeywordStorageBundle(),
             
             /** Vendor Bundles */
