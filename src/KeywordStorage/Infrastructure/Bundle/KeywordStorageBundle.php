@@ -1,6 +1,6 @@
 <?php
 
-namespace KeywordStorageBundle;
+namespace KeywordStorage\Infrastructure\Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

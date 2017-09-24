@@ -1,10 +1,11 @@
 <?php
 
-namespace KeywordStorageBundle\Infrastructure;
+namespace KeywordStorage\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use KeywordStorageBundle\Entity\Keyword;
-use KeywordStorageBundle\Entity\KeywordRepository;
+use KeywordStorage\Domain\Model\Keyword;
+use KeywordStorage\Domain\Model\KeywordRepository;
+
 
 class DoctrineKeywordRepository extends EntityRepository implements KeywordRepository
 {

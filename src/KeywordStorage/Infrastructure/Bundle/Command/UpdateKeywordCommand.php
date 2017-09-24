@@ -1,22 +1,25 @@
 <?php
 
+namespace KeywordStorage\Infrastructure\Bundle\Command;
 
-namespace KeywordStorageBundle\Command;
-
-use KeywordStorageBundle\Services\ModifyKeywords;
+use KeywordStorage\Application\ModifyKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DeleteKeywordCommand extends ContainerAwareCommand
+class UpdateKeywordCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:keyword-storage:delete')
+            ->setName('app:keyword-storage:update')
             ->addArgument(
-                'keyword',
+                'old_keyword',
+                InputArgument::REQUIRED
+            )
+            ->addArgument(
+                'new_keyword',
                 InputArgument::REQUIRED
             );
     }
@@ -31,30 +34,25 @@ class DeleteKeywordCommand extends ContainerAwareCommand
             '<fg=green>Keyword Storage Manager</>',
             '<fg=yellow>=======================</>',
             '',
-            '-> Deleting keyword...',
+            '-> Updating keyword: ' .
+                '<fg=red>' . $input->getArgument('old_keyword') . '</>' .
+                ' to ' .
+                '<fg=green>' . $input->getArgument('new_keyword') . '</>' .
+                ' ...'
         ]);
-    
-        $keywords = $this->splitKeywords(
-            $input->getArgument('keyword')
-        );
         
         /** @var ModifyKeywords $keywordsManager */
         $keywordsManager = $this
             ->getContainer()
             ->get('keyword_storage.modify_keywords_use_case');
-        $keywordsManager->deleteMany($keywords);
+        $keywordsManager->updateOneByName(
+            $input->getArgument('old_keyword'),
+            $input->getArgument('new_keyword')
+        );
         
         $output->writeln([
             '',
-            '<fg=green>Keyword(s) deleted successfully!</>'
+            '<fg=green>Keyword <fg=yellow>updated successfully!</>'
         ]);
-    }
-    
-    private function splitKeywords(string $keywordsString)
-    {
-        $cleanKeywordsString = str_replace(' ', '', $keywordsString);
-        $keywordsArray =  explode(',', $cleanKeywordsString);
-        
-        return $keywordsArray;
     }
 }

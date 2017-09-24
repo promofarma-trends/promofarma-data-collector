@@ -1,9 +1,9 @@
 <?php
 
-namespace KeywordStorageBundle\Services;
+namespace KeywordStorage\Application;
 
-use KeywordStorageBundle\Entity\Keyword;
-use KeywordStorageBundle\Entity\KeywordRepository;
+use KeywordStorage\Domain\Model\Keyword;
+use KeywordStorage\Domain\Model\KeywordRepository;
 
 final class CreateKeywords
 {

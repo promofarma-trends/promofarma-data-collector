@@ -1,9 +1,9 @@
 <?php
 
-namespace KeywordStorageBundle\Command;
+namespace KeywordStorage\Infrastructure\Bundle\Command;
 
-use KeywordStorageBundle\Services\CreateKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use KeywordStorage\Application\CreateKeywords;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

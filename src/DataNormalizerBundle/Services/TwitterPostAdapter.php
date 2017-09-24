@@ -15,7 +15,7 @@ use DateTime;
 /**
  * Class TwitterPostAdapter
  *
- * @package DataNormalizerBundle\Infrastructure
+ * @package DataNormalizerBundle\Bundles
  */
 class TwitterPostAdapter implements PostInterface
 {

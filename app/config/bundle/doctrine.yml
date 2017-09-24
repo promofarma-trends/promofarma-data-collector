@@ -13,4 +13,11 @@ doctrine:
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        auto_mapping: false
+        mappings:
+            keyword:
+                type: yml
+                dir: "%kernel.root_dir%/../src/KeywordStorage/Infrastructure/Bundle/Resources/config/doctrine"
+                is_bundle: false
+                prefix: "KeywordStorage\\Domain\\Model"
+                alias: Bundle

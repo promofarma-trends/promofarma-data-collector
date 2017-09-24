@@ -1,6 +1,6 @@
-KeywordStorageBundle\Entity\Keyword:
+KeywordStorage\Domain\Model\Keyword:
   type: entity
-  repositoryClass: KeywordStorageBundle\Infrastructure\DoctrineKeywordRepository
+  repositoryClass: KeywordStorage\Infrastructure\Repository\DoctrineKeywordRepository
   table: keywords
   id:
     id:

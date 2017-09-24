@@ -1,9 +1,8 @@
 <?php
 
-namespace KeywordStorageBundle\Command;
+namespace KeywordStorage\Infrastructure\Bundle\Command;
 
-use KeywordStorageBundle\Services\CreateKeywords;
-use KeywordStorageBundle\Services\ManageKeyword;
+use KeywordStorage\Application\CreateKeywords;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;

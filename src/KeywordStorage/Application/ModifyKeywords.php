@@ -1,11 +1,10 @@
 <?php
 
-namespace KeywordStorageBundle\Services;
-
+namespace KeywordStorage\Application;
 
 use DateTime;
-use KeywordStorageBundle\Entity\Keyword;
-use KeywordStorageBundle\Entity\KeywordRepository;
+use KeywordStorage\Domain\Model\Keyword;
+use KeywordStorage\Domain\Model\KeywordRepository;
 
 final class ModifyKeywords
 {
@@ -15,7 +14,6 @@ final class ModifyKeywords
     {
         $this->repository = $repository;
     }
-    
     
     public function deleteOne(string $keyword)
     {

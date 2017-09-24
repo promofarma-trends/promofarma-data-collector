@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             
             /** Application Bundles */
             new DataNormalizerBundle\DataNormalizerBundle(),
-            new KeywordStorageBundle\KeywordStorageBundle(),
+            new KeywordStorage\Infrastructure\Bundle\KeywordStorageBundle(),
             
             /** Vendor Bundles */
             new RSQueueBundle\RSQueueBundle(),

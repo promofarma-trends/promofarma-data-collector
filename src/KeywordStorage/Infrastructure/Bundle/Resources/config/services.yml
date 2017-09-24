@@ -6,17 +6,17 @@ services:
   # Keywords manager
   #
   keyword_storage.create_keywords_use_case:
-    class: KeywordStorageBundle\Services\CreateKeywords
+    class: KeywordStorage\Application\CreateKeywords
     arguments:
       - "@keyword_storage.keyword_repository"
 
   keyword_storage.modify_keywords_use_case:
-    class: KeywordStorageBundle\Services\ModifyKeywords
+    class: KeywordStorage\Application\ModifyKeywords
     arguments:
       - "@keyword_storage.keyword_repository"
 
   keyword_storage.get_keywords_use_case:
-    class: KeywordStorageBundle\Services\GetKeywords
+    class: KeywordStorage\Application\GetKeywords
     arguments:
       - "@keyword_storage.keyword_repository"
 
@@ -24,10 +24,10 @@ services:
   # Keywords repository
   #
   keyword_storage.keyword_repository:
-    class: KeywordStorageBundle\Infrastructure\DoctrineKeywordRepository
+    class: KeywordStorage\Infrastructure\Repository\DoctrineKeywordRepository
     factory:
       - "@doctrine.orm.default_entity_manager"
       - "getRepository"
     arguments:
-      - "KeywordStorageBundle:Keyword"
+      - "Bundle:Keyword"
 

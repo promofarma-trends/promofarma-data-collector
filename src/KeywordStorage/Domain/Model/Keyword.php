@@ -1,6 +1,6 @@
 <?php
 
-namespace KeywordStorageBundle\Entity;
+namespace KeywordStorage\Domain\Model;
 
 
 use DateTime;
